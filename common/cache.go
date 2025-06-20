@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-// setCacheUpdateEnabled - отключение/включение обновления кешей плюсометра
+// setCacheUpdateEnabled - отключение/включение обновления кешей приложения
 func SetCacheUpdateEnabled(enable bool) error {
 	for _, cache := range []string{"table1", "table2"} {
 		var err = func() error {

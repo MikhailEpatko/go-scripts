@@ -205,7 +205,7 @@ func uploadJson(
 	return nil
 }
 
-// collectIds - собирает id новых JSON-ов в файлы <table.name>-new-ids.txt на случай? если нужно будет откатить изменения
+// collectIds - собирает id новых JSON-ов в файлы <table.name>-new-ids.txt на случай, если нужно будет откатить изменения
 func collectIds(
 	wg *sync.WaitGroup,
 	table cm.Table,
