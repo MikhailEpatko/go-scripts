@@ -30,7 +30,7 @@ var (
 	JsonItemsPrefix = regexp.MustCompile(`^items.\d+.`)
 	ThirdSystemUrl  = "https://..."
 	AuthToken       = "TOKEN"
-	// количество пар ключ-значение в одном запросе, отправляемом в Танкер
+	// количество пар ключ-значение в одном запросе, отправляемом в третью систему
 	ChunkSize = 100
 	// быстрый анмаршалинг JSON-ов
 	Json       = jsoniterator.ConfigCompatibleWithStandardLibrary
