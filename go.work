@@ -1,0 +1,9 @@
+go 1.24.2
+
+use (
+	./common
+	./from_app_to_json_file
+	./rollback_app
+	./update_in_app
+	./update_in_third_system
+)
