@@ -24,6 +24,6 @@ profile.cov
 .env
 
 # Editor/IDE
-# .idea/
+ .idea/
 # .vscode/
 .DS_Store
