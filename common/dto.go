@@ -13,7 +13,7 @@ type JsonId struct {
 	Id int `json:"id"`
 }
 
-type Json struct {
+type JsonSource struct {
 	Sources []json.RawMessage `json:"items"`
 }
 

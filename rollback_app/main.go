@@ -82,7 +82,6 @@ func deleteJson(
 	if err != nil {
 		return fmt.Errorf("deleteJson: id = %s: request creation error: %w", id, err)
 	}
-	request.Header.Add(cm.TvmHeader, cm.TvmValue)
 	request.Header.Add("Content-Type", "application/json")
 	request.Header.Add("accept", "application/json")
 	resp, err := cm.HttpClient.Do(request)

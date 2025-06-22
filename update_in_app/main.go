@@ -56,7 +56,7 @@ func createNewJsons(
 		log.Printf("%s: createTranslationFiles: %v\n", table.Name, err)
 		return
 	}
-	var data cm.Json
+	var data cm.JsonSource
 	err = json.Unmarshal(jssonFiles, &data)
 	if err != nil {
 		log.Printf("%s: createNewJsons: json unmarshaling error: %v\n", table.Name, err)
@@ -88,7 +88,6 @@ func downloadJsons(table cm.Table) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("downloadJsons: creating request error: %w", err)
 	}
-	request.Header.Add(cm.TvmHeader, cm.TvmValue)
 	resp, err := cm.HttpClient.Do(request)
 	if err != nil {
 		return nil, fmt.Errorf("downloadJsons: sending request error: %v %w", *request, err)
@@ -157,9 +156,7 @@ func skipByPath(path string) bool {
 
 // skipByValue - проверяет: нужно ли пропустить создание перевода для этого значения
 func skipByValue(value string) bool {
-	return strings.HasPrefix(value, cm.ColorPattern) ||
-		strings.Contains(value, cm.UrlPattern) ||
-		strings.TrimSpace(value) == ""
+	return strings.TrimSpace(value) == ""
 }
 
 // uploadJson - сохранение через API приложения нового JSON-а

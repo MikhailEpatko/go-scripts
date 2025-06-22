@@ -52,7 +52,6 @@ func loadJsonFiles(table cm.Table) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("%s: loadJsonFiles: creating request error: %w", table.Name, err)
 	}
-	request.Header.Add(cm.TvmHeader, cm.TvmValue)
 	resp, err := cm.HttpClient.Do(request)
 	if err != nil {
 		return nil, fmt.Errorf("%s: loadJsonFiles: sending request error: %v %w", table.Name, *request, err)
@@ -136,9 +135,7 @@ func skipByPath(path string) bool {
 
 // skipByValue - проверка: нужно ли пропустить создание перевода для этого значения
 func skipByValue(value string) bool {
-	return strings.HasPrefix(value, cm.ColorPattern) ||
-		strings.Contains(value, cm.UrlPattern) ||
-		strings.TrimSpace(value) == ""
+	return strings.TrimSpace(value) == ""
 }
 
 // writeFile - записать кейсет в файл
