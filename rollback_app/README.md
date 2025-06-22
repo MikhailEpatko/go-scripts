@@ -1,5 +1,3 @@
-### Что делает:
+Delete new JSON files created as a result of running **update_in_app** via the API.
 
-Удалить через API новые JSON-ы, созданные в результате запуска **update_in_app**.
-
-Id JSON-ов берутся из файлов **<table.name>-new-ids.txt**.
+JSON IDs are taken from files **<table.name >-new-ids.txt **.

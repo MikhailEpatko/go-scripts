@@ -1,11 +1,9 @@
-### Что делает:
+Download JSON files from the application.
 
-Выгрузить JSON-ы из приложения.
+Make keys for them the same as in ../from_app_to_json_file.
 
-Сделать для них ключи так же, как в ../from_app_to_json_file.
+Replace JSON texts with keys.
 
-Заменить в JSON-ах тексты на ключи.
+Save new JSON files in the application.
 
-Сохранить новые JSON-ы в приложении.
-
-Сохранить id новых JSON-ов в файл.
+Save the new JSON IDs to a file.

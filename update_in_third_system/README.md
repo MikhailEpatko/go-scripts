@@ -1,7 +1,5 @@
-### Что делает:
+Read key-value pairs for a third system from json files.
 
-Прочитать из json-файлов пары ключ-значение для третьей системы.
+Upload the data to a third system.
 
-Загрузить данные в третью систему.
-
-Для работы скрипта нужна переменная окружения TOKEN.
+The environment variable TOKEN is needed for the script to work.

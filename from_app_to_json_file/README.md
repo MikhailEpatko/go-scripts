@@ -1,7 +1,5 @@
-### Что делает:
+Download JSON files from the application.
 
-Выгрузить JSON-файлы из приложения.
+Convert their contents into key-value pairs for the third system.
 
-Преобразовать их содержимое в пары ключ-значение для третьей системы.
-
-Сохранить результаты в json-файлы.
+Save the results to json files.

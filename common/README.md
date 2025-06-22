@@ -1,6 +1,4 @@
-# common
-
-Общие:
-- конфиги
-- функции работы с кешом
-- DTO-модели
+Common:
+- configs
+- cache management functions
+- DTO models

@@ -1,57 +1,61 @@
-## Что тут
+## What is here
+There are 5 different modules (4 applications and 1 package with a common code) that perform one common task - replacing text in JSON files with keys and transferring key-value pairs to a third system.
 
-Здесь 5 разных модулей (4 приложения и 1 пакет с общим кодом), выполняющих одну общую задачу - замена текста в JSON-файлах на ключи и передача пар ключ-значение в третью систему.
+The keys are formed as a string: the id of the json file + the path to the text in the json file.
 
-Ключи формируются в виде строки: id json-файла + путь к тексту в json-файле.
+Applications receive and modify data through the Web API of the applications whose data they serve.
 
-Приложения получают и изменяют данные через Web API приложений, чьи данные они обслуживают.
+Each application has its own:
 
-У каждого приложения есть свои:
 - README.md
-- main.go для запуска.
+- main.go to launch.
+The common package contains the configs of all applications, the structures they use, and the general functions of working with the cache.
 
-В пакете common лежат конфиги всех приложений, используемые ими структуры и общие функции работы с кешом.
+## How does it work
 
-## Как это работает
+1) install Go: https://go.dev/doc/install
+2) run **from_app_to_json_file**.
 
-1) установить Go: https://go.dev/doc/install
- 
-2) запустить **from_app_to_json_file**. 
 ```go
 go run from_app_to_json_file/main.go
 ```
-Оно сделает из json-файлов приложения json-файлы с парами ключ-значение для третьей системы. \
-Файлы будут созданы в пакете /files.
+It will make json files with key-value pairs for a third system from the application's json files.\
+The files will be created in the ./files package.
 
-3) проверить содержимое созданных json-файлов. \
-В качестве значений для ключей должны быть указаны тексты, а не другие ключи. \
+3) check the contents of the created json files.\
+Texts should be specified as values for keys, not other keys.
 
-4) запустить **update_in_third_system**.
+4) run **update_in_third_system**.
+
 ```go
 go run update_in_third_system/main.go
 ```
-Оно загрузит ключи в третью систему. \
-Ключи будут загружены в отдельные наборы для каждой таблицы.
+It will upload the keys to a third system.\
+The keys will be loaded into separate sets for each table.
 
-5) проверить в третьей системе наличие ключей.
+5) check the availability of keys in the third system.
 
-6) если в третьей системе всё ОК, то запустить **update_in_app**. 
+6) if everything is OK in the third system, then run **update_in_app**.
 ```go
 go run update_in_app/main.go
-```
-Оно:
-- отключит обновление кешей приложения,
-- скачает из приложения json-файлы,
-- заменит в json-файлах тексты на ключи,
-- через API приложения сохранит новые son-файлы,
-- сохранит в файлах **<table.name>-new-ids.txt** id новых son-файлов,
-- по окончании своей работы, включит обновление кешей.
 
-7) Если нужно откатить изменения, то - запустить **rollback_app**:
+```
+
+It will:
+
+- disable updating the application caches,
+- download json files from the application,
+- replace texts in json files with keys,
+- save new son files through the application API,
+- and save them to **<table.name >-new-ids.txt**. The ID of the new json files,
+- enable cache updates upon completion of its work.
+
+7) If you need to roll back the changes, then launch **rollback_app**:
 ```go
 go run rollback_app/main.go
+
 ```
-Оно:
-- отключит обновление кешей,
-- через API приложения удалит json-файлы, чьи id прочитает из файлов **<table.name>-new-ids.txt**,
-- включит обновление кешей.
+It will:
+- disable cache updates,
+- and delete json files through the application API, whose ids it reads from the files **<table.name >-new-ids.txt**,
+- enable cache updates.
